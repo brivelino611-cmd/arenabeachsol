@@ -1,0 +1,19 @@
+# Dependências
+node_modules/
+backend/node_modules/
+
+# Variáveis de ambiente — NUNCA versionar credenciais
+.env
+backend/.env
+
+# Logs
+npm-debug.log*
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

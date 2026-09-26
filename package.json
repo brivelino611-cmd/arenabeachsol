@@ -1,0 +1,12 @@
+{
+  "name": "arena-beach-solonopole",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site + sistema de reservas da Arena Beach Solonópole",
+  "scripts": {
+    "backend:install": "cd backend && npm install",
+    "backend:dev": "cd backend && npm run dev",
+    "backend:start": "cd backend && npm start",
+    "frontend:serve": "npx --yes serve frontend -l 5500"
+  }
+}
