@@ -26,6 +26,11 @@
   --container: 1180px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  --glass-blur: 18px;
+  --glass-bg: rgba(22, 22, 22, 0.5);
+  --glass-bg-scrolled: rgba(13, 13, 13, 0.7);
+  --glass-border: rgba(247, 247, 242, 0.08);
 }
 
 * { box-sizing: border-box; }
@@ -86,35 +91,41 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing:
 .nav {
   position: fixed;
   top: var(--safe-top);
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 500;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  padding: 18px 24px;
-  transition: background 0.25s ease, padding 0.25s ease, backdrop-filter 0.25s ease;
+  width: min(1100px, calc(100% - 32px));
+  margin-top: 16px;
+  padding: 10px 32px;
+  border-radius: 999px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: padding 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 .nav.is-scrolled {
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
-  padding: 12px 24px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  padding: 8px 28px;
+  background: var(--glass-bg-scrolled);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
 }
 .nav__logo { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.02em; }
 .nav__logo span { color: var(--lime); }
-.nav__links { display: flex; align-items: center; gap: 28px; }
+.nav__links { display: flex; align-items: center; justify-self: center; gap: 40px; }
 .nav__links a {
   font-size: 0.92rem;
   font-weight: 600;
   color: rgba(247, 247, 242, 0.85);
 }
 .nav__links a:hover { color: var(--lime); }
-.nav__cta { background: var(--orange); color: var(--black); padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; }
+.nav__cta { justify-self: end; background: var(--orange); color: var(--black); padding: 10px 22px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; }
 
 @media (max-width: 860px) {
-  .nav__links a:not(.nav__cta) { display: none; }
-  .nav__links { gap: 12px; }
+  .nav__links { display: none; }
   .nav__logo { font-size: 1rem; }
 }
 
