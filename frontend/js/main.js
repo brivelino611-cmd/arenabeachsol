@@ -6,6 +6,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   setYear();
+  setupTheme();
   setupNav();
   setupRevealOnScroll();
   renderQuadras();
@@ -20,6 +21,34 @@ document.addEventListener("DOMContentLoaded", () => {
 function setYear() {
   const el = document.getElementById("ano-atual");
   if (el) el.textContent = new Date().getFullYear();
+}
+
+/* ---------------- TEMA CLARO/ESCURO ---------------- */
+function setupTheme() {
+  const STORAGE_KEY = "arena-tema";
+  const toggle = document.getElementById("theme-toggle");
+  const icon = document.getElementById("theme-toggle-icon");
+  if (!toggle || !icon) return;
+
+  const aplicarIcone = (tema) => {
+    icon.textContent = tema === "light" ? "☀️" : "🌙";
+  };
+
+  aplicarIcone(document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark");
+
+  toggle.addEventListener("click", () => {
+    const atual = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+    const proximo = atual === "light" ? "dark" : "light";
+
+    if (proximo === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+
+    localStorage.setItem(STORAGE_KEY, proximo);
+    aplicarIcone(proximo);
+  });
 }
 
 /* ---------------- NAVEGAÇÃO ---------------- */

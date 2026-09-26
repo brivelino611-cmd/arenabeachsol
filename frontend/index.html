@@ -14,6 +14,13 @@
 <meta property="og:image" content="assets/images/og-arena-beach.jpg">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏖️</text></svg>">
+<script>
+  // Aplica o tema salvo antes do CSS renderizar, evitando "flash" do tema errado.
+  (function () {
+    var tema = localStorage.getItem("arena-tema");
+    if (tema === "light") document.documentElement.setAttribute("data-theme", "light");
+  })();
+</script>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -31,7 +38,12 @@
     <a href="#localizacao" data-nav-link>Localização</a>
     <a href="#contato" data-nav-link>Contato</a>
   </div>
-  <a href="#reservar" class="nav__cta" data-nav-link>Reservar agora</a>
+  <div class="nav__actions">
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+      <span id="theme-toggle-icon" aria-hidden="true">🌙</span>
+    </button>
+    <a href="#reservar" class="nav__cta" data-nav-link>Reservar agora</a>
+  </div>
 </nav>
 
 <div id="topo" class="hero-wrap">
