@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupTheme();
   setupNav();
   setupRevealOnScroll();
-  renderQuadras();
   renderPatrocinadores();
   renderServicosExtras();
   renderHorarioFuncionamento();
@@ -27,14 +26,7 @@ function setYear() {
 function setupTheme() {
   const STORAGE_KEY = "arena-tema";
   const toggle = document.getElementById("theme-toggle");
-  const icon = document.getElementById("theme-toggle-icon");
-  if (!toggle || !icon) return;
-
-  const aplicarIcone = (tema) => {
-    icon.textContent = tema === "light" ? "☀️" : "🌙";
-  };
-
-  aplicarIcone(document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark");
+  if (!toggle) return;
 
   toggle.addEventListener("click", () => {
     const atual = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
@@ -47,7 +39,6 @@ function setupTheme() {
     }
 
     localStorage.setItem(STORAGE_KEY, proximo);
-    aplicarIcone(proximo);
   });
 }
 
@@ -100,43 +91,6 @@ function setupRevealOnScroll() {
   );
 
   items.forEach((el) => observer.observe(el));
-}
-
-/* ---------------- QUADRAS ---------------- */
-function renderQuadras() {
-  const grid = document.getElementById("quadras-grid");
-  if (!grid) return;
-
-  grid.innerHTML = ARENA_CONFIG.quadras
-    .map(
-      (q, i) => `
-      <article class="court-card" data-reveal style="transition-delay:${i * 80}ms">
-        <div class="court-card__media">
-          <img src="${q.imagem}" alt="Foto da ${q.nome}"
-               onerror="this.closest('.court-card__media').classList.add('is-placeholder'); this.remove();">
-          <div class="court-card__placeholder-label">Foto oficial em breve</div>
-        </div>
-        <div class="court-card__body">
-          <h3>${q.nome}</h3>
-          <p class="court-card__modalidades">${q.modalidades.join(" / ")}</p>
-          <p class="court-card__desc">${q.descricao}</p>
-          ${
-            q.patrocinadoresIds && q.patrocinadoresIds.length
-              ? `<div class="court-card__sponsors">
-                  <span>Patrocinadores</span>
-                  ${q.patrocinadoresIds
-                    .map((id) => {
-                      const p = ARENA_CONFIG.patrocinadores.find((s) => s.id === id);
-                      return p ? `<span class="chip">${p.nome}</span>` : "";
-                    })
-                    .join("")}
-                </div>`
-              : ""
-          }
-        </div>
-      </article>`
-    )
-    .join("");
 }
 
 /* ---------------- PATROCINADORES ---------------- */

@@ -95,27 +95,6 @@ const ARENA_CONFIG = {
     },
   ],
 
-  // Quadras — PLACEHOLDER de fotos até o envio das imagens oficiais.
-  // Para adicionar uma quadra nova, copie um objeto do array e ajuste os campos.
-  quadras: [
-    {
-      id: "quadra-01",
-      nome: "Quadra 01",
-      modalidades: ["Beach Tennis", "Futvôlei"],
-      descricao: "Quadra de areia padrão, iluminação noturna.",
-      imagem: "assets/images/quadra-01.jpg", // PLACEHOLDER
-      patrocinadoresIds: [],
-    },
-    {
-      id: "quadra-02",
-      nome: "Quadra 02",
-      modalidades: ["Vôlei", "Futvôlei"],
-      descricao: "Quadra de areia padrão, iluminação noturna.",
-      imagem: "assets/images/quadra-02.jpg", // PLACEHOLDER
-      patrocinadoresIds: [],
-    },
-  ],
-
   // Patrocinadores — nenhum nome foi informado ainda.
   // Para adicionar, inclua um objeto { id, nome, logo, link } neste array.
   patrocinadores: [],

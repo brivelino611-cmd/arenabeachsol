@@ -40,7 +40,20 @@
   </div>
   <div class="nav__actions">
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
-      <span id="theme-toggle-icon" aria-hidden="true">🌙</span>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
     </button>
     <a href="#reservar" class="nav__cta" data-nav-link>Reservar agora</a>
   </div>
@@ -175,7 +188,61 @@
           <h2>Nossas quadras</h2>
           <p>Areia, iluminação e estrutura pensadas para Beach Tennis, Vôlei e Futvôlei.</p>
         </div>
-        <div class="courts-grid" id="quadras-grid"></div>
+        <div class="courts-grid">
+          <article class="court-card" data-reveal style="transition-delay:0ms">
+            <div class="court-card__media">
+              <img class="court-card__image" src="assets/images/mega-cachoeira.png" alt="Logo Mega Cachoeira"
+                   onerror="this.closest('.court-card__media').classList.add('is-placeholder'); this.remove();">
+              <div class="court-card__overlay"></div>
+              <span class="court-card__badge">01</span>
+              <div class="court-card__placeholder-label">Foto oficial em breve</div>
+            </div>
+            <div class="court-card__body">
+              <h3 class="court-card__title">Mega Cachoeira</h3>
+              <p class="court-card__description">Areia e iluminação preparadas para Beach Tennis, Vôlei e Futvôlei.</p>
+              <a href="#reservar" class="court-card__action" data-nav-link>
+                Reservar agora
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="court-card" data-reveal style="transition-delay:80ms">
+            <div class="court-card__media">
+              <img class="court-card__image" src="assets/images/mais-saude.png" alt="Logo Mais Saúde"
+                   onerror="this.closest('.court-card__media').classList.add('is-placeholder'); this.remove();">
+              <div class="court-card__overlay"></div>
+              <span class="court-card__badge">02</span>
+              <div class="court-card__placeholder-label">Foto oficial em breve</div>
+            </div>
+            <div class="court-card__body">
+              <h3 class="court-card__title">Mais Saúde</h3>
+              <p class="court-card__description">Areia e iluminação preparadas para Beach Tennis, Vôlei e Futvôlei.</p>
+              <a href="#reservar" class="court-card__action" data-nav-link>
+                Reservar agora
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="court-card" data-reveal style="transition-delay:160ms">
+            <div class="court-card__media">
+              <img class="court-card__image" src="assets/images/rabelo-construcoes.png" alt="Logo Rabelo Construções"
+                   onerror="this.closest('.court-card__media').classList.add('is-placeholder'); this.remove();">
+              <div class="court-card__overlay"></div>
+              <span class="court-card__badge">03</span>
+              <div class="court-card__placeholder-label">Foto oficial em breve</div>
+            </div>
+            <div class="court-card__body">
+              <h3 class="court-card__title">Rabelo Construções</h3>
+              <p class="court-card__description">Areia e iluminação preparadas para Beach Tennis, Vôlei e Futvôlei.</p>
+              <a href="#reservar" class="court-card__action" data-nav-link>
+                Reservar agora
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -267,11 +334,6 @@
       </div>
     </footer>
   </div>
-</div>
-
-<!-- CTA persistente -->
-<div class="cta-float">
-  <a href="#reservar" class="btn btn-primary" data-nav-link>Reservar agora</a>
 </div>
 
 <script src="js/config.js"></script>
